@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --color-paper: #f7f4ed;
+  --color-paper-2: #efeae0;
+  --color-ink: #14211a;
+  --color-ink-2: #43534a;
+
+  --color-brand-50: #edf6f0;
+  --color-brand-100: #daecdf;
+  --color-brand-200: #b6dac3;
+  --color-brand-300: #87c2a1;
+  --color-brand-500: #35915f;
+  --color-brand-600: #1f7a4c;
+  --color-brand-700: #196b41;
+  --color-brand-800: #145233;
+  --color-brand-900: #0f3c24;
+
+  --color-gold-100: #f4ead0;
+  --color-gold-300: #e3c877;
+  --color-gold-500: #c9a227;
+  --color-gold-700: #96770e;
+
+  --color-clay-100: #fbe3da;
+  --color-clay-500: #d4582e;
+  --color-clay-700: #a03c1c;
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-brand-200);
+  color: var(--color-brand-900);
+}
+
+/* Subtle dot texture for paper background */
+.texture-dots {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-ink) 7%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Chalk grid texture for dark panels */
+.texture-chalk {
+  background-image:
+    linear-gradient(color-mix(in oklab, #ffffff 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, #ffffff 5%, transparent) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Raised paper card */
+.card-lift {
+  box-shadow:
+    0 1px 0 color-mix(in oklab, var(--color-ink) 6%, transparent),
+    0 10px 30px -12px color-mix(in oklab, var(--color-ink) 18%, transparent);
+}
+
+.underline-input {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid color-mix(in oklab, var(--color-ink) 25%, transparent);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.underline-input:focus {
+  border-bottom-color: var(--color-brand-600);
+  background: color-mix(in oklab, var(--color-brand-50) 60%, transparent);
+}
+
+/* Sticky header blur */
+.glass-header {
+  background: color-mix(in oklab, var(--color-paper) 82%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
